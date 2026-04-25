@@ -114,6 +114,8 @@
         .icon-teal   { background: #f0fdfa; }
         .icon-red    { background: #fef2f2; }
         .icon-indigo { background: #eef2ff; }
+        .icon-yellow { background: #fefce8; }
+        .icon-cyan   { background: #ecfeff; }
 
         h2 {
             font-size: 1.15rem;
@@ -149,6 +151,61 @@
         a { color: #2563eb; text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
 
+        /* Feedback table */
+        .feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            font-size: 0.93rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .feedback-table thead tr {
+            background: #1e3a5f;
+            color: white;
+        }
+        .feedback-table th {
+            padding: 11px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+        .feedback-table tbody tr {
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .feedback-table tbody tr:last-child { border-bottom: none; }
+        .feedback-table tbody tr:nth-child(even) { background: #f8fafc; }
+        .feedback-table td {
+            padding: 11px 16px;
+            color: #4b5563;
+            vertical-align: top;
+        }
+        .feedback-table td:first-child { font-weight: 600; color: #1e293b; }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .tag-optional { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+        .tag-required { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+        /* Info note box */
+        .note-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 0.9rem;
+            color: #92400e;
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
         /* Contact card */
         .contact-card {
             display: flex;
@@ -174,25 +231,25 @@
         .contact-label { font-size: 0.78rem; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
         .contact-email { font-size: 1rem; font-weight: 600; color: #1d4ed8; }
 
-        /* Privacy badges row */
+        /* Trust badges row */
         .trust-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 4px;
+            margin-top: 14px;
         }
         .trust-badge {
             display: flex;
             align-items: center;
             gap: 6px;
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
             border-radius: 8px;
-            padding: 8px 14px;
-            font-size: 0.85rem;
+            padding: 7px 13px;
+            font-size: 0.83rem;
             font-weight: 500;
-            color: #166534;
         }
+        .trust-green  { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+        .trust-blue   { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; }
+        .trust-yellow { background: #fefce8; border: 1px solid #fde68a; color: #854d0e; }
 
         /* Footer */
         footer {
@@ -208,6 +265,7 @@
         @media (max-width: 600px) {
             .section { padding: 24px 20px; }
             .hero { padding: 44px 20px 36px; }
+            .feedback-table th, .feedback-table td { padding: 9px 10px; }
         }
     </style>
 </head>
@@ -227,10 +285,10 @@
         <div class="section">
             <p>Welcome to <strong>World Atlas &amp; Country Info</strong>. We value your privacy and are committed to being fully transparent about how we handle information in our application. This policy outlines our data practices in simple, clear language.</p>
             <div class="trust-row">
-                <div class="trust-badge">✅ No Data Collection</div>
-                <div class="trust-badge">✅ No Ads</div>
-                <div class="trust-badge">✅ Safe for All Ages</div>
-                <div class="trust-badge">✅ Local Processing</div>
+                <div class="trust-badge trust-green">✅ Safe for All Ages</div>
+                <div class="trust-badge trust-green">✅ Local Processing</div>
+                <div class="trust-badge trust-blue">ℹ️ Ad-Supported</div>
+                <div class="trust-badge trust-yellow">📝 Optional Feedback</div>
             </div>
         </div>
 
@@ -240,7 +298,7 @@
                 <div class="section-icon icon-blue">🗺️</div>
                 <h2>1. Overview</h2>
             </div>
-            <p>World Atlas &amp; Country Info is an educational tool designed for exploring world geography and statistics. Our primary goal is to provide rich information while maintaining a <strong>minimal data footprint</strong> on your device.</p>
+            <p>World Atlas &amp; Country Info is an educational tool designed for exploring world geography and statistics. Our primary goal is to provide rich information while maintaining a <strong>minimal data footprint</strong> on your device. The app is free to use and supported by advertisements.</p>
         </div>
 
         <!-- 2. Data Collection -->
@@ -249,69 +307,129 @@
                 <div class="section-icon icon-green">🔒</div>
                 <h2>2. Data Collection</h2>
             </div>
-            <p><strong>Personal Data:</strong> We do <strong>NOT</strong> collect, store, or transmit any personally identifiable information (PII) such as your name, email address, phone number, or contacts.</p>
+            <p><strong>Personal Data:</strong> We do <strong>NOT</strong> automatically collect any personally identifiable information (PII). The only personal data we may receive is what you <strong>voluntarily submit</strong> through our in-app feedback form.</p>
             <p><strong>Location Data:</strong> The app uses map engines (MapLibre / Google Maps) to display geographical data. It does not track or store your real-time GPS location unless you explicitly grant permission to the map provider for the "Find my location" feature.</p>
-            <p><strong>Device Information:</strong> We do not collect device-specific identifiers for marketing or analytics purposes.</p>
+            <p><strong>Device Information:</strong> We do not collect device-specific identifiers directly. However, our advertising partner (Google AdMob) may collect certain device information to serve relevant ads — see Section 3.</p>
         </div>
 
-        <!-- 3. Third-Party Services -->
+        <!-- 3. Advertising -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-yellow">📢</div>
+                <h2>3. Advertising</h2>
+            </div>
+            <p>This app is <strong>free and ad-supported</strong>. We use <strong>Google AdMob</strong> to display advertisements. AdMob may collect and use data to serve personalized or non-personalized ads depending on your region and consent settings.</p>
+            <p>AdMob may collect:</p>
+            <ul>
+                <li>📱 <span><strong>Advertising ID:</strong> A resettable device identifier used for ad targeting and frequency capping.</span></li>
+                <li>🌐 <span><strong>IP Address &amp; Usage Data:</strong> Used to determine approximate location and serve relevant ads.</span></li>
+                <li>🍪 <span><strong>Cookies &amp; Tracking Technologies:</strong> Used by Google to measure ad performance.</span></li>
+            </ul>
+            <p>For users in the EU/EEA, the app will request your consent before showing personalized ads, in compliance with GDPR. You can review Google's data practices at their <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and manage your ad preferences via <a href="https://adssettings.google.com" target="_blank">Google Ad Settings</a>.</p>
+        </div>
+
+        <!-- 4. User Feedback Data -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-cyan">💬</div>
+                <h2>4. User Feedback</h2>
+            </div>
+            <p>The app includes an optional <strong>Feedback Form</strong> to help us improve your experience. The following fields are available:</p>
+
+            <table class="feedback-table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Required?</th>
+                        <th>How It's Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td><span class="tag tag-optional">Optional</span></td>
+                        <td>To personalize our reply to you (if you provide your email).</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><span class="tag tag-optional">Optional</span></td>
+                        <td>To respond to your feedback or follow up. Never used for marketing.</td>
+                    </tr>
+                    <tr>
+                        <td>Message</td>
+                        <td><span class="tag tag-required">Required</span></td>
+                        <td>Your feedback, suggestions, or bug report to help us improve the app.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note-box">
+                ⚠️ <span>Feedback is sent directly to our support email. We do not share your feedback data with any third party. If you include your email, we will only use it to respond to your message.</span>
+            </div>
+        </div>
+
+        <!-- 5. Third-Party Services -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-purple">🔗</div>
-                <h2>3. Third-Party Services</h2>
+                <h2>5. Third-Party Services</h2>
             </div>
-            <p>Our app integrates the following third-party services to enhance the mapping experience:</p>
+            <p>Our app integrates the following third-party services:</p>
             <ul>
+                <li>📢 <span><strong>Google AdMob:</strong> Serves in-app advertisements. May collect device and usage data. See <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</span></li>
                 <li>🗾 <span><strong>Google Maps API:</strong> If you choose the Google Maps provider in settings, Google may collect usage data as per their <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</span></li>
                 <li>🌐 <span><strong>MapLibre GL:</strong> An open-source rendering engine that does not track personal user data by default.</span></li>
             </ul>
         </div>
 
-        <!-- 4. Data Usage -->
+        <!-- 6. Data Usage -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-teal">💾</div>
-                <h2>4. Data Usage</h2>
+                <h2>6. Data Usage</h2>
             </div>
-            <p>All data processing within the app — such as comparing countries or searching for statistics — happens <strong>locally on your device</strong> or via static JSON assets bundled with the app. We do not operate a backend server that stores your search history or user preferences.</p>
+            <p>All app functionality — such as comparing countries or searching for statistics — is processed <strong>locally on your device</strong> via static JSON assets. We do not operate a backend server that stores your usage history or preferences.</p>
+            <p>Feedback data (if submitted) is received by us solely to <strong>respond and improve the app</strong>. It is never sold, rented, or shared with advertisers or third parties.</p>
         </div>
 
-        <!-- 5. Children's Privacy -->
+        <!-- 7. Children's Privacy -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-pink">👶</div>
-                <h2>5. Children's Privacy</h2>
+                <h2>7. Children's Privacy</h2>
             </div>
-            <p>This app is <strong>safe for all ages</strong> and provides educational content about world geography. We do not knowingly collect any data from children under the age of 13, in compliance with COPPA guidelines.</p>
+            <p>This app provides educational content about world geography and is intended for a <strong>general audience</strong>. We do not knowingly collect personal data from children under the age of 13.</p>
+            <p>Ads shown in the app are served by Google AdMob. For users identified as children, Google will serve <strong>non-personalized, child-directed ads</strong> in compliance with COPPA and applicable laws.</p>
         </div>
 
-        <!-- 6. Permissions -->
+        <!-- 8. Permissions -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-orange">📋</div>
-                <h2>6. Permissions</h2>
+                <h2>8. Permissions</h2>
             </div>
             <p>The app may request the following system permissions:</p>
             <ul>
-                <li>🌐 <span><strong>Internet:</strong> To load map tiles and external images like Coat of Arms / emblems.</span></li>
+                <li>🌐 <span><strong>Internet:</strong> To load map tiles, external images (Coat of Arms / emblems), and display advertisements.</span></li>
                 <li>📡 <span><strong>Network State:</strong> To verify if the device is online before attempting map rendering.</span></li>
+                <li>🆔 <span><strong>AD_ID (Android):</strong> Used by Google AdMob to serve and measure advertisements. You can reset or opt out of this via your device's advertising settings.</span></li>
             </ul>
         </div>
 
-        <!-- 7. Changes -->
+        <!-- 9. Changes -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-indigo">📝</div>
-                <h2>7. Changes to This Policy</h2>
+                <h2>9. Changes to This Policy</h2>
             </div>
-            <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated <strong>"Last Updated"</strong> date at the top. We encourage you to review this page periodically.</p>
+            <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated <strong>"Last Updated"</strong> date at the top. We encourage you to review this page periodically for any updates.</p>
         </div>
 
-        <!-- 8. Contact -->
+        <!-- 10. Contact -->
         <div class="section">
             <div class="section-header">
                 <div class="section-icon icon-red">✉️</div>
-                <h2>8. Contact Us</h2>
+                <h2>10. Contact Us</h2>
             </div>
             <p>If you have any questions or suggestions about our Privacy Policy, feel free to reach out:</p>
             <div class="contact-card">
